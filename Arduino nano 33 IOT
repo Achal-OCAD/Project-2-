@@ -1,0 +1,39 @@
+// Achal Shah
+// Coded for assignment 2 at OCAD University
+// Servo rotation using if and else 
+
+
+#include <Servo.h>     // Library for Servo Motor
+
+int lightsensor=A1;// initialize pin A1
+int val=0;       // initialize variable val
+Servo rotate;   // servo name
+
+int servopin = 7;
+
+ void setup()
+{
+
+Serial.begin(9600);   // set baud rate at “9600”
+rotate.attach(servopin);   // servo pin
+rotate.write(0);     // servo start position
+}
+
+ void loop()
+{
+val=analogRead(lightsensor);
+Serial.println(val);// display the value of val
+delay(10);
+
+if(val>450) {
+
+   Serial.println(" I am awake ");
+   rotate.write(41); 
+}
+
+else {
+
+ Serial.println(" Shhh.. "); 
+ rotate.write(0);
+}
+} 
